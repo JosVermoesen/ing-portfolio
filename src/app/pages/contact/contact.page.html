@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'CONTACT.Title' | translate }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-spinner *ngIf="busy"></ion-spinner>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="!readyToSend">
+    <div *ngIf="form">
+      <form [formGroup]="form">
+        <ion-grid>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3">
+              <ion-list>
+                <ion-item>
+                  <ion-label position="floating">{{ 'CONTACT.MessageTextLabel' | translate }}</ion-label>
+                  <ion-textarea rows="10" formControlName="message"></ion-textarea>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3">
+              <ion-button (click)="checkBeforeSending()" color="primary" [disabled]="!form.valid">
+                {{ 'CONTACT.AlmostReadyButton' | translate }}</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="readyToSend">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">{{ 'CONTACT.MessageTextLabel' | translate }}</ion-label>
+              <ion-textarea readonly rows="10" value="{{form.value.message}}"></ion-textarea>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!busy">
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button (click)="backToEditing()" color="primary">{{ 'CONTACT.EditButtonLabel' | translate }}
+          </ion-button>
+          <ion-button (click)="submitContactMail()" type="submit" color="warning" [disabled]="!form.valid">
+            {{ 'CONTACT.SendButtonLabel' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="busy">
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button disabled type="submit" color="warning" expand="block">{{ 'CONTACT.BusyButtonLabel' | translate }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
