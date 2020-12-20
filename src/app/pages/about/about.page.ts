@@ -14,7 +14,7 @@ export class AboutPage implements OnInit {
   version: string = version;
 
   qrElementType = 'url';
-  // qrValue = 'https://github.com/openSource4Brokers/portfolio9';
+  // qrValue = 'https://github.com/JosVermoesen/ing-portfolio';
 
   qrResult: any;
   qrValue: any;
