@@ -44,7 +44,7 @@ export class AboutPage implements OnInit {
   }
 
   async openGithubPage() {
-    await Browser.open({ url: 'https://github.com/openSource4Brokers/Portfolio58' });
+    await Browser.open({ url: 'https://github.com/JosVermoesen/ing-portfolio' });
   }
 
   ionViewWillEnter() {
