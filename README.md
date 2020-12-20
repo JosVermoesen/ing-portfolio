@@ -3,7 +3,7 @@
 ## Getting started for users
 
 Android version: [demo](https://play.google.com/store/apps/details?id=be.vsoft.portfolio)
-Web version: [demo](https://portfolio.rv-services.be)
+Web version: [demo](https://portfolio.rv.be)
 
 Your own added data is stored as json files inside the localStorage of the browser you are using. Profit. :tada:
 
@@ -23,7 +23,7 @@ Your own added data is stored as json files inside the localStorage of the brows
 
 ### Get our app code on github
 
-- Clone this repository: `git clone https://github.com/openSource4Brokers/portfolio9.git`.
+- Clone this repository: `git clone https://github.com/JosVermoesen/ing-portfolio.git`.
 - Run `npm install` inside the project root.
 - Run `ionic serve` in a terminal from the project root.
 - You are allowed to use our dotnet core server for registering and testing.
