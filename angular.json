@@ -15,7 +15,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "qrcode"
+              "qrcode",
+              "url"
             ],
             "outputPath": "www",
             "index": "src/index.html",
