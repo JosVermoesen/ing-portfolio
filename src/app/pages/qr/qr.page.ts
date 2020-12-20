@@ -24,13 +24,13 @@ export class QrPage implements AfterViewInit {
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
     private loadingCtrl: LoadingController,
-    private plt: Platform
+    private platform: Platform
   ) {
     // PWA check for IOS...
     const isInStandaloneMode = () =>
       'standalone' in window.navigator && window.navigator['standalone'];
 
-    if (this.plt.is('ios') && isInStandaloneMode()) {
+    if (this.platform.is('ios') && isInStandaloneMode()) {
       console.log('I am an iOS PWA!');
       // then scan button will not work... 
       // try a file handle instead  

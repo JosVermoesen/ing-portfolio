@@ -111,9 +111,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
-      preloadingStrategy: PreloadAllModules,
-    }),
+    useHash: true,
+    preloadingStrategy: PreloadAllModules,
+    relativeLinkResolution: 'legacy'
+}),
   ],
   providers: [MemberEditResolver, VsoftCustomerService, CustomerDetailResolver],
   exports: [RouterModule],
