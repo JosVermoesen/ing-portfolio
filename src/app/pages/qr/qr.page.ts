@@ -1,6 +1,9 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ToastController, LoadingController, Platform, AlertController } from '@ionic/angular';
 import jsQR from 'jsqr';
+import { Plugins } from '@capacitor/core';
+
+const { Clipboard } = Plugins;
 
 @Component({
   selector: 'app-qr',
@@ -116,7 +119,7 @@ export class QrPage implements AfterViewInit {
       const code = jsQR(imageData.data, imageData.width, imageData.height, {
         inversionAttempts: 'dontInvert'
       });
-      
+
       if (code) {
         console.log('code: ', code);
         this.scanActive = false;
@@ -161,5 +164,16 @@ export class QrPage implements AfterViewInit {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  async onClipTest(textToCopy: string) {
+    Clipboard.write({
+      string: textToCopy
+    });
+
+    /* const str = await Clipboard.read({
+      type: 'string'
+    });
+    console.log(str); */
   }
 }

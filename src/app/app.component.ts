@@ -12,6 +12,8 @@ import { AuthService } from './_services/auth.service';
 import { LanguageService } from './_services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 
+const { Browser } = Plugins;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -19,6 +21,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
   user: User;
   memberLoading = false;
+  androidAppInstalled = false;
 
   constructor(
     private platform: Platform,
@@ -43,8 +46,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.reloadCache();
-
+    this.capacitorCheck();
     this.memberLoading = true;
     const token = localStorage.getItem('token');
     if (token) {
@@ -74,15 +76,21 @@ export class AppComponent implements OnInit {
       }
     }); */
   }
+ 
 
-  reloadCache() {
-    /* if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        if (confirm('New version available would you like to update?')) {
-          window.location.reload();
-        }
-      })
-    } */
+  capacitorCheck() {
+    if (this.platform.is('capacitor')) {
+      console.log('An Android version is available in Play Store!');
+      this.androidAppInstalled = true;
+    }
+  }
+
+  async openGooglePlayPage() {
+    await Browser.open({ url: 'https://play.google.com/store/apps/details?id=be.vsoft.portfolio' });
+  }
+
+  androidInstall() {
+    this.openGooglePlayPage();
   }
 
   onLogout() {

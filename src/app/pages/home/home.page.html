@@ -40,6 +40,7 @@
                         <ion-card-subtitle>{{ 'HOME.WelcomeMessage' | translate }}</ion-card-subtitle>
                     </ion-card-header>
                 </div>
+
                 <ion-card-content>
                     <div *ngIf="!loggedIn()">
                         <p>{{ 'HOME.MessageAboutApp' | translate }}</p>
@@ -74,6 +75,7 @@
                             {{ 'HOME.MessageNoServerOnlyLocalCopy' | translate }}
                         </ion-button>
                     </div>
+
                 </ion-card-content>
             </ion-card>
         </ion-col>

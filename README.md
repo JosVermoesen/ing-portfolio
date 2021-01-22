@@ -36,8 +36,8 @@ Your own added data is stored as json files inside the localStorage of the brows
 - Initialize capacitor: `npx portfolio be.vsoft.portfolio`
 - Initialize app: `npx cap init`
 - If needed PWA Elements: `npm install @ionic/pwa-elements` ng add @angular/pwa
-- First build (important!): `ionic build`
 - Add Android platform: `npx cap add android`
+- First build (important!): `ionic build` or production build: `ionic build --prod`
 - After every build (important!): `npx cap copy`
 - Open Android IDE (after latest build): `npx cap open android`
 - Profit. :tada:

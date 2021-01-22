@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './../../_services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, AlertController } from '@ionic/angular';
+import { PopoverController, AlertController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { version } from '../../../../package.json';
 
@@ -29,11 +29,11 @@ export class HomePage implements OnInit {
     private alertCtrl: AlertController,
     private ts: TranslateService,
     private mc: ManualContractService,
-    private ionicStorage: Storage
+    private ionicStorage: Storage,
+    private platform: Platform
   ) { }
 
   ngOnInit() {
-    this.reloadCache();
     this.ionicStorage.get('MANUALONLY').then(val => {
       if (val === 'TRUE') {
         this.togglemanualONLY = true;
@@ -45,18 +45,8 @@ export class HomePage implements OnInit {
     });    
   }
 
-  reloadCache() {
-    /* if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        if (confirm('New version available would you like to update?')) {
-          window.location.reload();
-        }
-      })
-    } */
-  }
-
   ionViewWillEnter() {
-    this.mc.loadManualContracts();
+    this.mc.loadManualContracts();    
     this.memberLoading = false;
     if (this.authService.currentUser) {
     }

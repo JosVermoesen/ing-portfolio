@@ -93,15 +93,16 @@ export class ContractdetailComponent implements OnInit {
     }
   }
 
-  async onClipTest(comType: string) {
-    /* Clipboard.write({
+  /* async onClipTest(comType: string) {
+    Clipboard.write({
       string: comType
     });
 
     const str = await Clipboard.read({
       type: 'string'
-    }); */
-  }
+    });
+    console.log(str);
+  } */
 
   onCall(comNumber: string) {
     // this.commingFrom('onCall');

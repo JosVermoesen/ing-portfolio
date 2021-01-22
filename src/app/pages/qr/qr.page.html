@@ -10,8 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <input #fileinput type="file" accept="image/*;capture=camera" hidden
-  (change)="handleFile($event.target.files)">
+  <input #fileinput type="file" accept="image/*;capture=camera" hidden (change)="handleFile($event.target.files)">
 
   <ion-button expand="full" (click)="captureImage()">
     <ion-icon slot="start" name="camera"></ion-icon>
@@ -36,6 +35,13 @@
     <ion-icon slot="start" name="close"></ion-icon>
     Scan stoppen
   </ion-button>
+
+  <div *ngIf="scanResult">
+    <ion-button expand="full" (click)="onClipTest(scanResult)" color="danger">
+      <ion-icon slot="start" name="close"></ion-icon>
+      Kopieer naar klembord
+    </ion-button>
+  </div>
 
   <ion-card *ngIf="scanResult">
     <ion-card-header>
