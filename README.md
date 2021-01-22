@@ -29,7 +29,7 @@ Your own added data is stored as json files inside the localStorage of the brows
 - You are allowed to use our dotnet core server for registering and testing.
 - Profit. :tada:
 
-## Development it yourself
+## Develop it yourself
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 - New project: `ionic start portfolio9 blank --type=angular --capacitor`
