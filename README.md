@@ -9,7 +9,7 @@ Your own added data is stored as json files inside the localStorage of the brows
 
 ## Getting started for developers
 
-### Install and update the magical 4
+### Install and update the frameworks
 
 - [Install NodeJS](https://nodejs.org/). Hint: eventually install and use [nvm](https://medium.com/@Joachim8675309/installing-node-js-with-nvm-4dc469c977d9) for easy installing and/or switching between node versions
 - [Angular CLI](https://www.npmjs.com/package/@angular/cli): `npm i -g @angular/cli`
@@ -53,7 +53,7 @@ ionic cap run android -l --external
 
 - install all packages in one commandline: `npm i @ngx-translate/core @ngx-translate/http-loader jsqr @techiediaries/ngx-qrcode`
 
-### PWA
+### PWA (think twice before implementing..)
 
 - Angular PWA: `ng add @angular/pwa`
 - Ionic PWA Elements: `npm install @ionic/pwa-elements`
@@ -70,8 +70,8 @@ ionic cap run android -l --external
 
 ### Angular
 
-This app is on Angular 10. Update to latest Angular 10 with:
-`ng update @angular/cli@10 @angular/core@10`
+This app is on Angular 11. Update to latest Angular 11 with:
+`ng update @angular/cli@11 @angular/core@11`
 
 Follow the instructions eventualy for fixes
 
@@ -90,7 +90,7 @@ In angular.json, to avoid CommonJs warnings, add **allowedCommonJsDependencies**
 
 ```
 
-## VS CODE Extensions 2020
+## VS CODE Extensions 2021
 
 indent rainbow
 rest client

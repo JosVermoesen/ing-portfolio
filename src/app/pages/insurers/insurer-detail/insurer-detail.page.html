@@ -10,6 +10,54 @@
 <ion-content>
   <ion-grid>
     <ion-row>
+
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-list>
+          <ion-item *ngIf="loadedInsurer.phone">
+            <ion-badge color="light">{{ loadedInsurer.phone }}</ion-badge>
+            <ion-buttons>
+              <ion-button *ngIf="hasPhoneFunction" (click)="onCall(loadedInsurer.phone)">
+                <ion-icon name="call" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+
+          <ion-item *ngIf="loadedInsurer.email">
+            <ion-badge color="light">{{ loadedInsurer.email }}</ion-badge>
+            <ion-buttons>
+              <ion-button (click)="onMail(loadedInsurer.email)">
+                <ion-icon name="mail" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+
+        </ion-list>
+
+      </ion-col>
+
+      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+        <ion-card>
+          <ion-card-content>
+            <ion-img class="insurer-image" [src]="'/assets/images/companies/'+loadedInsurer.imageUrl"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/insurers"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ loadedInsurer.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
         <ion-card>
           <ion-card-header>
@@ -19,11 +67,11 @@
 
         </ion-card>
       </ion-col>
-      <!--  <div>
+      <div>
         <ion-button (click)="onClipTest()" color="primary" expand="block">
           Call Test
         </ion-button>
-      </div> -->
+      </div>
 
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
 
@@ -33,12 +81,12 @@
           </ion-item>
 
           <ion-item *ngIf="loadedInsurer.phone">
-            <!-- <ion-label position="fixed">{{ 'INSURERS.Phone' | translate }}</ion-label> -->
+            <ion-label position="fixed">{{ 'INSURERS.Phone' | translate }}</ion-label>
             <ion-badge color="light">{{ loadedInsurer.phone }}</ion-badge>
             <ion-buttons>
-              <!-- <ion-button *ngIf="!hasPhoneFunction" (click)="onClipTest(loadedInsurer.phone)">
+              <ion-button *ngIf="!hasPhoneFunction" (click)="onClipTest(loadedInsurer.phone)">
                 <ion-icon name="copy" slot="icon-only"></ion-icon>
-              </ion-button> -->
+              </ion-button>
               <ion-button *ngIf="hasPhoneFunction" (click)="onCall(loadedInsurer.phone)">
                 <ion-icon name="call" slot="icon-only"></ion-icon>
               </ion-button>
@@ -46,12 +94,12 @@
           </ion-item>
 
           <ion-item *ngIf="loadedInsurer.email">
-            <!-- <ion-label position="fixed">{{ 'INSURERS.Mail' | translate }}</ion-label> -->
+            <ion-label position="fixed">{{ 'INSURERS.Mail' | translate }}</ion-label>
             <ion-badge color="light">{{ loadedInsurer.email }}</ion-badge>
             <ion-buttons>
-              <!-- <ion-button (click)="onClipTest(loadedInsurer.email)">
+              <ion-button (click)="onClipTest(loadedInsurer.email)">
                 <ion-icon name="copy" slot="icon-only"></ion-icon>
-              </ion-button> -->
+              </ion-button>
               <ion-button (click)="onMail(loadedInsurer.email)">
                 <ion-icon name="mail" slot="icon-only"></ion-icon>
               </ion-button>
@@ -67,4 +115,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+</ion-content> -->
