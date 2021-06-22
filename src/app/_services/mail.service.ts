@@ -7,7 +7,7 @@ import { IContactmail } from '../_models/contactmail';
   providedIn: 'root',
 })
 export class MailService {
-  baseUrl = environment.apiUrl + 'auth/';
+  baseUrl = environment.apiUrl + 'account/';
 
   constructor(private http: HttpClient) {}
 

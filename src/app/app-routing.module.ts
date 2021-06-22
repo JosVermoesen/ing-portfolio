@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './_guards/auth.guard';
+import { AccountGuard } from './_guards/auth.guard';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { CustomerDetailResolver } from './_resolvers/customer-detail.resolver';
 import { VsoftCustomerService } from './_services/vsoftcustomer.service';
@@ -68,7 +68,7 @@ const routes: Routes = [
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [AuthGuard],
+    canActivate: [AccountGuard],
     children: [
       {
         path: 'member',

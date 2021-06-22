@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { ToastService } from './../_services/toast.service';
+import { ToastService } from '../_services/toast.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
@@ -7,7 +7,7 @@ import { AuthService } from '../_services/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AccountGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
