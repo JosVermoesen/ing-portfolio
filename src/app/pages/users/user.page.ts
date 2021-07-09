@@ -1,14 +1,17 @@
 import { AlertController } from '@ionic/angular';
-import { ToastService } from './../../_services/toast.service';
+import { ToastService } from '../../_services/toast.service';
 
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { User } from 'src/app/_models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
 import { TranslateService } from '@ngx-translate/core';
-import { StoragePhoto } from 'src/app/_models/storagePhoto';
+import { StoragePhoto } from '../../_models/storagePhoto';
+import { take } from 'rxjs/operators';
+import { User } from '../../shared/models/user';
+import { AccountService } from '../../shared/services/account.service';
+import { UserService } from '../../shared/services/user.service';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -32,15 +35,16 @@ function base64toBlob(base64Data, contentType) {
 }
 
 @Component({
-  selector: 'app-member',
-  templateUrl: './member.page.html',
-  styleUrls: ['./member.page.scss']
+  selector: 'app-user',
+  templateUrl: './user.page.html',
+  styleUrls: ['./user.page.scss']
 })
-export class MemberPage implements OnInit {
+export class UserPage implements OnInit {
   public photos: StoragePhoto[] = [];
 
   editForm: FormGroup;
   // @ViewChild('editForm')
+  activeUser: User;
   user: User;
   imgData: any;
 
@@ -50,18 +54,30 @@ export class MemberPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private aService: AccountService,
+    private userService: UserService,
     private router: Router,
     private ts: ToastService,
     private translate: TranslateService,
     private alertCtrl: AlertController,
     private ionicStorage: Storage
-  ) {}
+  ) {
+    this.aService.currentUser$.pipe(take(1)).subscribe(result => {
+      this.activeUser = result;
+      if (this.activeUser.clientNumber === null) {
+        this.hasClientNumber = false;
+      } else {
+        this.hasClientNumber = true;
+      }
+    });
+  }
 
   ionViewWillEnter() {
     this.isLoading = false;
   }
 
   ionViewDidEnter() {
+
     if (!this.hasClientNumber) {
       // clientNumberWarning
       const msg =
@@ -73,14 +89,12 @@ export class MemberPage implements OnInit {
 
   ngOnInit() {
     this.loadSavedPhotos();
-    this.route.data.subscribe(data => {
-      this.user = data.user;
+    this.loadUserData();
+  }
 
-      if (this.user.clientNumber === null) {
-        this.hasClientNumber = false;
-      } else {
-        this.hasClientNumber = true;
-      }
+  loadUserData() {
+    this.userService.getUser(this.activeUser.userName).subscribe(result => {
+      this.user = result;
     });
   }
 
@@ -131,7 +145,7 @@ export class MemberPage implements OnInit {
           text: this.translate.instant('ALERT.btnCancelText'),
           role: 'cancel',
           cssClass: 'secondary',
-          handler: blah => {}
+          handler: blah => { }
         },
         {
           text: this.translate.instant('ALERT.btnOkText'),

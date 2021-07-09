@@ -8,9 +8,9 @@
         </ion-title>
         <ion-buttons slot="primary">
             <ion-button>
-                <ion-spinner *ngIf="memberLoading"></ion-spinner>
+                <ion-spinner *ngIf="userLoading"></ion-spinner>
             </ion-button>
-            <ion-button *ngIf="!memberLoading" (click)="openSettingsPopover($event)">
+            <ion-button *ngIf="!userLoading" (click)="openSettingsPopover($event)">
                 <ion-icon name="ellipsis-vertical-outline" slot="icon-only"></ion-icon>
             </ion-button>
         </ion-buttons>
@@ -42,7 +42,7 @@
                 </div>
 
                 <ion-card-content>
-                    <div *ngIf="!loggedIn()">
+                    <div *ngIf="(aService.currentUser$ | async) === null">
                         <p>{{ 'HOME.MessageAboutApp' | translate }}</p>
                         <div *ngIf="toggleServerLive">
                             <ion-button [routerLink]="'/login'" color="primary" expand="block">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <div *ngIf="loggedIn()" class="ion-padding">
+                    <div *ngIf="aService.currentUser$ | async" class="ion-padding">
                         <div *ngIf="toggleServerLive">
                             <ion-button (click)="showMemberPage()" color="primary" expand="block">
                                 {{ 'HOME.MyProfilePage' | translate }}
@@ -63,7 +63,7 @@
                         <ion-button (click)="loadLocalData()" color="primary" expand="block">
                             {{ 'HOME.MessageServerLocalCopy' | translate }}: {{dateOfCopy | date:'dd/MM/yyyy hh:mm'}}
                         </ion-button>
-                        <div *ngIf="loggedIn()">
+                        <div *ngIf="aService.currentUser$ | async">
                             <br>
                             <ion-button [routerLink]="'/contact'" color="primary" expand="block">
                                 {{ 'CONTACT.Title' | translate }}

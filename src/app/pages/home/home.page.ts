@@ -1,12 +1,12 @@
 import { ManualContractService } from './../../_services/manualcontract.service';
 import { SettingsPopoverPage } from './settings-popover/settings-popover.page';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from './../../_services/auth.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PopoverController, AlertController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { version } from '../../../../package.json';
+import { environment } from '../../../environments/environment';
+import { AccountService } from '../../shared/services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +14,9 @@ import { version } from '../../../../package.json';
   styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
-  version: string = version;
+  version: string = environment.version;
 
-  memberLoading = false;
+  userLoading = false;
   toggleServerLive = false;
   togglemanualONLY = false;
 
@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService,
+    public aService: AccountService,
     private popoverCtrl: PopoverController,
     private alertCtrl: AlertController,
     private ts: TranslateService,
@@ -42,13 +42,13 @@ export class HomePage implements OnInit {
         this.togglemanualONLY = false;
         this.checkForLive();
       }
-    });    
+    });
   }
 
   ionViewWillEnter() {
-    this.mc.loadManualContracts();    
-    this.memberLoading = false;
-    if (this.authService.currentUser) {
+    this.mc.loadManualContracts();
+    this.userLoading = false;
+    if (this.aService.currentUser) {
     }
   }
 
@@ -70,14 +70,9 @@ export class HomePage implements OnInit {
     });
   }
 
-  loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;
-  }
-
   showMemberPage() {
-    this.memberLoading = true;
-    this.router.navigateByUrl('/member');
+    this.userLoading = true;
+    this.router.navigateByUrl('/user');
   }
 
   loadLocalData() {

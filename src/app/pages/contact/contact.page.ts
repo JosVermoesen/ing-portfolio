@@ -1,5 +1,4 @@
 import { ToastService } from './../../_services/toast.service';
-import { User } from 'src/app/_models/user';
 import { environment } from '../../../environments/environment';
 import { MailService } from './../../_services/mail.service';
 import { IContactmail } from './../../_models/contactmail';
@@ -8,6 +7,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+import { User } from '../../shared/models/user';
 
 @Component({
   selector: 'app-contact',

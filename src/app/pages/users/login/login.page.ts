@@ -1,9 +1,9 @@
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from './../../../_services/toast.service';
-import { AuthService } from './../../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AccountService } from '../../../shared/services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +18,15 @@ export class LoginPage implements OnInit {
   passwordMessage: string;
   passwordMinMessage: string;
   passwordMaxMessage: string;
+  // tslint:disable-next-line: variable-name
   validation_messages: any;
 
   constructor(
-    private authService: AuthService,
+    private aService: AccountService,
     private router: Router,
     private ts: ToastService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initTranslateMessages();
@@ -75,26 +76,27 @@ export class LoginPage implements OnInit {
 
   login() {
     this.isLoading = true;
-    this.authService
+    this.aService
       .login({
         username: this.loginForm.value.username,
         password: this.loginForm.value.password
       })
       .subscribe(
-        data => {
-          this.translate.get('LOGIN.LoginSuccess').subscribe(value => {
-            this.ts.show(value, 'short');
+        () => {
+          this.translate.get('LOGIN.LoginSuccess').subscribe((res: string) => {
+            this.ts.show(res, 'short');
           });
           this.isLoading = false;
         },
         error => {
-          this.translate.get('LOGIN.LoginFailed').subscribe(value => {
-            this.ts.show(value, 'short');
+          this.translate.get('LOGIN.LoginFailed').subscribe((res: string) => {
+            this.ts.show(res + ': [' + error + ']', 'long');
           });
           this.isLoading = false;
         },
         () => {
-          this.router.navigateByUrl('/member');
+          this.router.navigateByUrl('/user');
+          // console.log('whatever');
         }
       );
   }

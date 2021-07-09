@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { version } from '../../../../package.json';
 
 import { Plugins } from '@capacitor/core';
+import { environment } from 'src/environments/environment';
 
 const { Browser } = Plugins;
 
@@ -11,7 +12,7 @@ const { Browser } = Plugins;
   styleUrls: ['./about.page.scss']
 })
 export class AboutPage implements OnInit {
-  version: string = version;
+  version = environment.version;
 
   qrElementType = 'url';
   // qrValue = 'https://github.com/JosVermoesen/ing-portfolio';
@@ -33,14 +34,25 @@ export class AboutPage implements OnInit {
     const ibanValue = 'DE71110220330123456789';
     const amountValue = 'EUR12.3';
     const purposeValue = 'GDDS';
-    const referenceValue = 'RF18539007547034'
+    const referenceValue = 'RF18539007547034';
     const remittanceValue = '';
     const informationValue = '';
 
     const qrTMP = 'BCD 001 1 SCT BHBLDEHHXXX Franz Mustermänn DE71110220330123456789 EUR12.3 GDDS RF18539007547034';
 
-    this.qrValue = serviceTagValue + lf + versionValue + lf + charactersetValue + lf + identificationValue + lf + bicValue + lf + nameValue + lf + ibanValue + lf +
-      amountValue + lf + purposeValue + lf + referenceValue + lf + remittanceValue + lf + informationValue;
+    this.qrValue =
+      serviceTagValue + lf +
+      versionValue + lf +
+      charactersetValue + lf +
+      identificationValue + lf +
+      bicValue + lf +
+      nameValue + lf +
+      ibanValue + lf +
+      amountValue + lf +
+      purposeValue + lf +
+      referenceValue + lf +
+      remittanceValue + lf +
+      informationValue;
   }
 
   async openGithubPage() {
@@ -48,19 +60,19 @@ export class AboutPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log('ionViewWillEnter event fired works')
+    console.log('ionViewWillEnter event fired works');
   }
 
   ionViewWillLeave() {
-    console.log('ionViewWillLeave event fired')
+    console.log('ionViewWillLeave event fired');
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidEnter event fired works')
+    console.log('ionViewDidEnter event fired works');
   }
 
   ionViewDidLeave() {
-    console.log('ionViewDidLeave event fired')
+    console.log('ionViewDidLeave event fired');
   }
 }
 

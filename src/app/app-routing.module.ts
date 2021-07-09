@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './shared/guards/auth.guard';
 
-import { AccountGuard } from './_guards/auth.guard';
-import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { CustomerDetailResolver } from './_resolvers/customer-detail.resolver';
 import { VsoftCustomerService } from './_services/vsoftcustomer.service';
 
@@ -54,29 +53,28 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () =>
-      import('./pages/member/register/register.module').then(
+      import('./pages/users/register/register.module').then(
         (m) => m.RegisterPageModule
       ),
   },
   {
     path: 'login',
     loadChildren: () =>
-      import('./pages/member/login/login.module').then(
+      import('./pages/users/login/login.module').then(
         (m) => m.LoginPageModule
       ),
   },
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [AccountGuard],
+    canActivate: [AuthGuard],
     children: [
       {
-        path: 'member',
+        path: 'user',
         loadChildren: () =>
-          import('./pages/member/member.module').then(
-            (m) => m.MemberPageModule
+          import('./pages/users/user.module').then(
+            (m) => m.UserPageModule
           ),
-        resolve: { user: MemberEditResolver },
       },
       {
         path: 'customers/:id',
@@ -85,7 +83,7 @@ const routes: Routes = [
             (m) => m.ContractsListPageModule
           ),
         resolve: { customer: CustomerDetailResolver },
-      },      
+      },
       {
         path: 'map',
         loadChildren: () =>
@@ -111,12 +109,12 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-    useHash: true,
-    preloadingStrategy: PreloadAllModules,
-    relativeLinkResolution: 'legacy'
-}),
+      useHash: true,
+      preloadingStrategy: PreloadAllModules,
+      relativeLinkResolution: 'legacy'
+    }),
   ],
-  providers: [MemberEditResolver, VsoftCustomerService, CustomerDetailResolver],
+  providers: [VsoftCustomerService, CustomerDetailResolver],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

@@ -19,7 +19,7 @@ export class CustomerDetailResolver implements Resolve<VsoftCustomer> {
     return this.vCs.getVsoftCustomer(route.params.id).pipe(
       catchError(error => {
         this.toast.show('Problem retrieving data', 'short');
-        this.router.navigate(['/member']);
+        this.router.navigate(['/user']);
         return of(null);
       })
     );

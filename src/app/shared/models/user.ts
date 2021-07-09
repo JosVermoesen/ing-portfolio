@@ -1,23 +1,26 @@
 import { Photo } from './photo';
 
 export interface User {
-  id: number;
   userName: string;
-  knownAs: string;
-  age: number;
-  gender: string;
+  token: string;
   email: string;
+  knownAs?: string;
+  roles: string[];
+  berNumber?: string;
+  clientNumber?: string;
+  photoUrl?: string;
+
+  gender?: string;
+  age?: number;
   phoneNumber: string;
   created: Date;
   lastActive: Date;
-  photoUrl: string;
   city: string;
   country: string;
-  interests?: string;
+  gdpr?: string;
   introduction?: string;
   lookingFor?: string;
-  berNumber?: string;
-  clientNumber?: string;
   photos?: Photo[];
-  roles?: string[];
+
+  // id?: number;
 }

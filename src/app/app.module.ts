@@ -7,10 +7,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 export function createTranslateLoader(http: HttpClient) {
@@ -19,17 +18,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 import { IonicStorageModule } from '@ionic/storage';
 import { SettingsPopoverPageModule } from './pages/home/settings-popover/settings-popover.module';
-
-import { JwtModule } from '@auth0/angular-jwt';
-export function tokenGetter(): string {
-  return localStorage.getItem('token');
-}
-
-export const jwtConfig = {
-  tokenGetter,
-  whitelistedDomains: environment.apiWhiteListDomain,
-  blacklistedRoutes: environment.apiBlackListDomain
-};
+import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,14 +37,12 @@ export const jwtConfig = {
         deps: [HttpClient]
       }
     }),
-    JwtModule.forRoot({
-      config: jwtConfig
-    }),
     SettingsPopoverPageModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

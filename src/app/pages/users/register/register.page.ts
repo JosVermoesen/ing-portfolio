@@ -1,12 +1,18 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  ValidatorFn,
+  AbstractControl
+} from '@angular/forms';
 
 import { Router } from '@angular/router';
 
-import { User } from '../../../_models/user';
-import { AuthService } from './../../../_services/auth.service';
 import { ToastService } from './../../../_services/toast.service';
+import { User } from '../../../shared/models/user';
+import { AccountService } from '../../../shared/services/account.service';
 
 @Component({
   selector: 'app-register',
@@ -31,15 +37,16 @@ export class RegisterPage implements OnInit {
   passwordMessage: string;
   passwordMinMessage: string;
   passwordMaxMessage: string;
+  // tslint:disable-next-line: variable-name
   validation_messages: any;
 
   constructor(
-    private authService: AuthService,
+    private aService: AccountService,
     private router: Router,
     private fb: FormBuilder,
     private ts: ToastService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.initTranslateMessages();
@@ -147,25 +154,30 @@ export class RegisterPage implements OnInit {
             Validators.maxLength(36)
           ]
         ],
-        confirmPassword: ['', Validators.required]
-      },
-      { validator: this.passwordMatchValidator }
-    );
+        confirmPassword: [
+          '',
+          [
+            Validators.required,
+            this.matchValues('password')
+          ]
+        ]
+      });
   }
 
-  passwordMatchValidator(g: FormGroup) {
-    return g.get('password').value === g.get('confirmPassword').value
-      ? null
-      : { mismatch: true };
+  matchValues(matchTo: string): ValidatorFn {
+    return (control: AbstractControl) => {
+      return control?.value === control?.parent?.controls[matchTo].value
+        ? null : { isMatching: true };
+    };
   }
 
   register() {
     if (this.registerForm.valid) {
       const userEmail = this.registerForm.value.email;
-      this.registerForm.value.username = userEmail;      
+      this.registerForm.value.username = userEmail;
       this.user = Object.assign({}, this.registerForm.value);
       this.isLoading = true;
-      this.authService.register(this.user).subscribe(
+      this.aService.register(this.user).subscribe(
         () => {
           this.isLoading = false;
           this.translate.get('REGISTER.RegisterSuccess').subscribe(value => {
@@ -174,13 +186,13 @@ export class RegisterPage implements OnInit {
         },
         error => {
           this.isLoading = false;
-          this.translate.get('REGISTER.RegisterFailed').subscribe(value => {
-            this.ts.show(value, 'short');
+          this.translate.get('REGISTER.RegisterFailed').subscribe((res: string) => {
+            this.ts.show(res + ': [' + error + ']', 'short');
           });
         },
         () => {
-          this.authService.login(this.user).subscribe(() => {
-            this.router.navigate(['/member']);
+          this.aService.login(this.user).subscribe(() => {
+            this.router.navigate(['/user']);
           });
         }
       );
