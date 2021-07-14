@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './shared/guards/auth.guard';
 
-import { CustomerDetailResolver } from './_resolvers/customer-detail.resolver';
-import { VsoftCustomerService } from './_services/vsoftcustomer.service';
+import { AuthGuard } from './shared/guards/auth.guard';
+// import { CustomerDetailResolver } from './shared/resolvers/customer-detail.resolver';
+import { VsoftCustomerService } from './shared/services/vsoftcustomer.service';
 
 // import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 
@@ -82,7 +82,6 @@ const routes: Routes = [
           import('./pages/contractslist/contractslist.module').then(
             (m) => m.ContractsListPageModule
           ),
-        resolve: { customer: CustomerDetailResolver },
       },
       {
         path: 'map',
@@ -114,7 +113,7 @@ const routes: Routes = [
       relativeLinkResolution: 'legacy'
     }),
   ],
-  providers: [VsoftCustomerService, CustomerDetailResolver],
+  providers: [VsoftCustomerService],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

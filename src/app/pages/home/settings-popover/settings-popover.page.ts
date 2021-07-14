@@ -1,6 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
-import { ToastService } from './../../../_services/toast.service';
-import { LanguageService } from '../../../_services/language.service';
+import { ToastService } from './../../../shared/services/toast.service';
+import { LanguageService } from '../../../shared/services/language.service';
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';

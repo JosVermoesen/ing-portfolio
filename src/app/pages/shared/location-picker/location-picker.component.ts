@@ -1,8 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
-import { PlaceLocation, Coordinates } from './../../../_models/location';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
-import { MapModalComponent } from './../map-modal/map-modal.component';
+
 import {
   ModalController,
   ActionSheetController,
@@ -12,6 +10,10 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Capacitor, Plugins } from '@capacitor/core';
+
+import { environment } from '../../../../environments/environment';
+import { MapModalComponent } from './../map-modal/map-modal.component';
+import { PlaceLocation, Coordinates } from './../../../shared/models/location';
 
 @Component({
   selector: 'app-location-picker',
@@ -108,8 +110,8 @@ export class LocationPickerComponent implements OnInit {
 
   private createPlace(lat: number, lng: number) {
     const pickedLocation: PlaceLocation = {
-      lat: lat,
-      lng: lng,
+      lat,
+      lng,
       address: null,
       staticMapImageUrl: null
     };

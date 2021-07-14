@@ -1,6 +1,6 @@
-import { ManualContractService } from './../../../_services/manualcontract.service';
-import { SelectOptions } from '../../../_models/selectOptions';
-import { VsoftContract } from '../../../_models/vsoftContract';
+import { ManualContractService } from './../../../shared/services/manualcontract.service';
+import { SelectOptions } from '../../../shared/models/selectOptions';
+import { VsoftContract } from '../../../shared/models/vsoftContract';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';

@@ -50,5 +50,4 @@ export interface VsoftCustomer {
   v251?: string; // old banc account (partner)
 
   vsoftContracts?: VsoftContract[];
-  vsoftCustomerInvoices?: VsoftCustomerInvoice[];
 }

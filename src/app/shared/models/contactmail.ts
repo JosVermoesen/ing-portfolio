@@ -1,4 +1,4 @@
-export interface IContactmail {
+export interface Contactmail {
   subject: string;
   name: string;
   rr: string;

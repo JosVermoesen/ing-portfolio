@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { Platform, AlertController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Capacitor, Plugins } from '@capacitor/core';
-
-import { LanguageService } from './_services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+
+import { LanguageService } from './shared/services/language.service';
 import { User } from './shared/models/user';
 import { AccountService } from './shared/services/account.service';
 

@@ -1,17 +1,17 @@
 import { AlertController } from '@ionic/angular';
-import { ToastService } from '../../_services/toast.service';
-
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
 import { TranslateService } from '@ngx-translate/core';
-import { StoragePhoto } from '../../_models/storagePhoto';
 import { take } from 'rxjs/operators';
 import { User } from '../../shared/models/user';
+
 import { AccountService } from '../../shared/services/account.service';
 import { UserService } from '../../shared/services/user.service';
+import { ToastService } from '../../shared/services/toast.service';
+import { StoragePhoto } from '../../shared/models/storagePhoto';
 
 function base64toBlob(base64Data, contentType) {
   contentType = contentType || '';
@@ -128,8 +128,11 @@ export class UserPage implements OnInit {
   }
 
   fakeClientNumber(clientId: string) {
-    this.isLoading = true;
-    this.router.navigate(['/customers', this.searchClient]);
+    console.log(this.searchClient);
+    if (this.searchClient.length == 6) {
+      this.isLoading = true;
+      this.router.navigate(['/customers', this.searchClient]);
+    }
   }
 
   async presentAlertConfirm() {

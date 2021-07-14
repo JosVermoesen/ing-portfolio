@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { ToastService } from './../../../_services/toast.service';
+import { ToastService } from './../../../shared/services/toast.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';

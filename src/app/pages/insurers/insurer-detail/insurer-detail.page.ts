@@ -1,6 +1,6 @@
 import { Platform } from '@ionic/angular';
-import { InsurerService } from '../../../_services/insurer.service';
-import { Insurer } from '../../../_models/insurer';
+import { InsurerService } from '../../../shared/services/insurer.service';
+import { Insurer } from '../../../shared/models/insurer';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';

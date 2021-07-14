@@ -31,12 +31,13 @@ export class QrPage implements AfterViewInit {
   ) {
     // PWA check for IOS...
     const isInStandaloneMode = () =>
+      // tslint:disable-next-line: no-string-literal
       'standalone' in window.navigator && window.navigator['standalone'];
 
     if (this.platform.is('ios') && isInStandaloneMode()) {
       console.log('I am an iOS PWA!');
-      // then scan button will not work... 
-      // try a file handle instead  
+      // then scan button will not work...
+      // try a file handle instead
     }
   }
 
@@ -53,7 +54,7 @@ export class QrPage implements AfterViewInit {
   handleFile(files: FileList) {
     const file = files.item(0);
 
-    var img = new Image();
+    const img = new Image();
     img.onload = () => {
       this.canvasContext.drawImage(img, 0, 0, this.canvasElement.width, this.canvasElement.height);
       const imageData = this.canvasContext.getImageData(
@@ -95,7 +96,7 @@ export class QrPage implements AfterViewInit {
       if (this.loading) {
         await this.loading.dismiss();
         this.loading = null,
-          this.scanActive = true
+          this.scanActive = true;
       }
 
       this.canvasElement.height = this.videoElement.videoHeight;

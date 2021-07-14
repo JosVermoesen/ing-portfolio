@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform, AlertController } from '@ionic/angular';
 
 import { ActionSheetController } from '@ionic/angular';
-import { PhotoService } from '../../_services/photo.service';
+import { PhotoService } from '../../shared/services/photo.service';
 
 import {
   Plugins,
@@ -12,7 +12,7 @@ import {
 } from '@capacitor/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { StoragePhoto } from 'src/app/_models/storagePhoto';
+import { StoragePhoto } from '../../shared/models/storagePhoto';
 import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 

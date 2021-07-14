@@ -10,7 +10,7 @@ import {
 
 import { Router } from '@angular/router';
 
-import { ToastService } from './../../../_services/toast.service';
+import { ToastService } from './../../../shared/services/toast.service';
 import { User } from '../../../shared/models/user';
 import { AccountService } from '../../../shared/services/account.service';
 

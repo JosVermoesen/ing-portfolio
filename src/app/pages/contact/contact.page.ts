@@ -1,7 +1,7 @@
-import { ToastService } from './../../_services/toast.service';
+import { ToastService } from './../../shared/services/toast.service';
 import { environment } from '../../../environments/environment';
-import { MailService } from './../../_services/mail.service';
-import { IContactmail } from './../../_models/contactmail';
+import { MailService } from './../../shared/services/mail.service';
+import { Contactmail } from '../../shared/models/contactmail';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -22,7 +22,7 @@ export class ContactPage implements OnInit {
 
   user: User;
 
-  contactMail: IContactmail;
+  contactMail: Contactmail;
   templateName = 'contact.html';
   mailSubject: string;
   templateBody: string = null;
@@ -43,7 +43,7 @@ export class ContactPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user = JSON.parse(localStorage.getItem('vUser'));
     this.urlEmail = this.user.email;
     this.urlName = this.user.knownAs;
     this.urlPhone = this.user.phoneNumber;
@@ -135,23 +135,26 @@ export class ContactPage implements OnInit {
     // console.log(this.form.value);
 
     this.contactMail = Object.assign({}, this.form.value);
+    console.log(this.contactMail);
     this.busy = true;
     this.ms.contactmail(this.contactMail).subscribe(
       () => {
         this.ts.get('CONTACT.SendSuccessMessage').subscribe((res: string) => {
           this.toastService.show(res, 'long');
+          this.busy = false;
         });
       },
       (error) => {
         this.ts.get('CONTACT.SendFailedMessage').subscribe((res: string) => {
-          this.toastService.show(res, 'long');
+          this.toastService.show(res + ' ' + error, 'long');
           this.busy = false;
         });
       },
       () => {
-        setTimeout(() => {
+        this.router.navigate(['/home']);
+        /* setTimeout(() => {
           this.router.navigate(['/home']);
-        }, this.waitMilliseconds);
+        }, this.waitMilliseconds); */
       }
     );
   }

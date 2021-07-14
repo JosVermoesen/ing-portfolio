@@ -1,5 +1,6 @@
-import { Insurer } from './../_models/insurer';
 import { Injectable } from '@angular/core';
+
+import { Insurer } from '../models/insurer';
 
 @Injectable({
   providedIn: 'root'
@@ -7,19 +8,10 @@ import { Injectable } from '@angular/core';
 export class InsurerService {
   private insurers: Insurer[] = [
     {
-      id: 'be_0145',
-      name: 'Athora',
-      serviceAbout: 'Bike Assist, Home Assistance & Car',
-      phone: '+32 2 403 89 00',
-      email: 'servicedesk.be@athora.com',
-      fax: null,
-      imageUrl: 'be_0145.png'
-    },
-    {
       id: 'be_0096',
       name: 'Baloise Insurance',
       serviceAbout: '',
-      phone: '+32 3 870 95 70',
+      phone: '+32 3 870 95 70   ',
       email: 'assistance@baloise.be',
       fax: null,
       imageUrl: 'be_0096.png'
@@ -61,13 +53,13 @@ export class InsurerService {
       imageUrl: 'be_0687.png'
     },
     {
-      id: 'be_0985',
-      name: 'Dela',
-      serviceAbout: 'Melding overlijden',
-      phone: '078 05 05 78',
-      email: null,
+      id: 'be_0145',
+      name: 'Athora',
+      serviceAbout: 'Bike Assist, Home Assistance & Car',
+      phone: '+32 2 403 89 00',
+      email: 'servicedesk.be@athora.com',
       fax: null,
-      imageUrl: 'be_0985.png'
+      imageUrl: 'be_0145.png'
     },
     {
       id: 'be_0097',
@@ -77,6 +69,15 @@ export class InsurerService {
       email: null,
       fax: null,
       imageUrl: 'be_0097.png'
+    },
+    {
+      id: 'be_0985',
+      name: 'Dela',
+      serviceAbout: 'Melding overlijden',
+      phone: '078 05 05 78',
+      email: null,
+      fax: null,
+      imageUrl: 'be_0985.png'
     },
     {
       id: 'be_0039',

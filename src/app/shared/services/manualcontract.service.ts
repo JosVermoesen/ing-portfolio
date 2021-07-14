@@ -1,8 +1,9 @@
-import { VsoftContract } from '../_models/vsoftContract';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { take, map, tap } from 'rxjs/operators';
 import { Storage } from '@ionic/storage';
+
+import { VsoftContract } from '../models/vsoftContract';
 
 @Injectable({
   providedIn: 'root'

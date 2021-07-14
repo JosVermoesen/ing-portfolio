@@ -1,4 +1,4 @@
-import { ManualContractService } from './../../_services/manualcontract.service';
+import { ManualContractService } from './../../shared/services/manualcontract.service';
 import { SettingsPopoverPage } from './settings-popover/settings-popover.page';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';

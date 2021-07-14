@@ -1,5 +1,5 @@
-import { Insurer } from '../../_models/insurer';
-import { InsurerService } from '../../_services/insurer.service';
+import { Insurer } from '../../shared/models/insurer';
+import { InsurerService } from '../../shared/services/insurer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

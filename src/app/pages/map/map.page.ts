@@ -1,4 +1,4 @@
-import { PlaceLocation } from './../../_models/location';
+import { PlaceLocation } from './../../shared/models/location';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

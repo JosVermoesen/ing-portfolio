@@ -1,7 +1,7 @@
-import { SelectOptions } from '../../../_models/selectOptions';
-import { ManualContractService } from './../../../_services/manualcontract.service';
-import { ToastService } from './../../../_services/toast.service';
-import { VsoftContract } from '../../../_models/vsoftContract';
+import { SelectOptions } from '../../../shared/models/selectOptions';
+import { ManualContractService } from './../../../shared/services/manualcontract.service';
+import { ToastService } from './../../../shared/services/toast.service';
+import { VsoftContract } from '../../../shared/models/vsoftContract';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';

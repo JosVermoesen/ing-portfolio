@@ -1,9 +1,6 @@
 import { TranslateService } from '@ngx-translate/core';
-import { ManualContractService } from './../../_services/manualcontract.service';
 import { ContractdetailComponent } from './contractdetail/contractdetail.component';
-import { VsoftContract } from '../../_models/vsoftContract';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VsoftCustomer } from '../../_models/vsoftCustomer';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   ModalController,
@@ -13,8 +10,17 @@ import {
 } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Subscription } from 'rxjs';
+
+import { ManualContractService } from './../../shared/services/manualcontract.service';
+import { VsoftContract } from '../../shared/models/vsoftContract';
+import { VsoftCustomer } from '../../shared/models/vsoftCustomer';
+
 import { ContractEditComponent } from './contractedit/contractedit.component';
 import { ContractNewComponent } from './contractnew/contractnew.component';
+import { VsoftCustomerService } from '../../shared/services/vsoftcustomer.service';
+import { User } from '../../shared/models/user';
+import { AccountService } from 'src/app/shared/services/account.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contractslist',
@@ -23,6 +29,8 @@ import { ContractNewComponent } from './contractnew/contractnew.component';
 })
 export class ContractsListPage implements OnInit, OnDestroy {
   customer: VsoftCustomer;
+  activeUser: User;
+  hasClientNumber: boolean;
 
   servercontracts: VsoftContract[];
   manualcontracts: VsoftContract[];
@@ -39,6 +47,7 @@ export class ContractsListPage implements OnInit, OnDestroy {
   isLocalCopy: boolean;
 
   constructor(
+    private vsoftCustomerService: VsoftCustomerService,
     private route: ActivatedRoute,
     private router: Router,
     private modalCtrl: ModalController,
@@ -83,17 +92,29 @@ export class ContractsListPage implements OnInit, OnDestroy {
           });
         } else {
           this.isLocalCopy = false;
-          this.route.data.subscribe(data => {
-            this.customer = data.customer;
-            this.servercontracts = this.customer.vsoftContracts;
-            this.myDocuments = this.customer.v254;
-            if (this.myDocuments.length) {
-              this.hasDocumentsDef = true;
-            }
+          this.route.params.subscribe(result => {
+            // console.log(result.id);
+            this.loadServerData(result.id);
           });
         }
       }
     });
+  }
+
+  loadServerData(customerId: string) {
+    console.log('start get: ', customerId);
+    this.vsoftCustomerService
+      .getVsoftCustomer(customerId)
+      .subscribe((result: VsoftCustomer) => {
+        this.customer = result;
+        // console.log(this.customer);
+        this.servercontracts = this.customer.vsoftContracts;
+        this.myDocuments = this.customer.v254;
+        if (this.myDocuments.length) {
+          this.hasDocumentsDef = true;
+        }
+        console.log('ready');
+      });
   }
 
   ionViewWillEnter() {

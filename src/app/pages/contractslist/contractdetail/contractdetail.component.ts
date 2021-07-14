@@ -4,10 +4,10 @@ import { Storage } from '@ionic/storage';
 
 import { TranslateService } from '@ngx-translate/core';
 
-import { InsurerService } from '../../../_services/insurer.service';
-import { Insurer } from '../../../_models/insurer';
-import { VsoftContract } from '../../../_models/vsoftContract';
-import { SelectOptions } from '../../../_models/selectOptions';
+import { InsurerService } from '../../../shared/services/insurer.service';
+import { Insurer } from '../../../shared/models/insurer';
+import { VsoftContract } from '../../../shared/models/vsoftContract';
+import { SelectOptions } from '../../../shared/models/selectOptions';
 import { Plugins } from '@capacitor/core';
 import { Router } from '@angular/router';
 
