@@ -30,6 +30,7 @@ Your own added data is stored as json files inside the localStorage of the brows
 - Profit. :tada:
 
 ## environment.prod.ts
+
 ## environment.ts
 
 Add your own environment for versions and api codes
@@ -63,6 +64,7 @@ Add your own environment for versions and api codes
 - Profit. :tada:
 
 ### Try also
+
 ionic cap run android -l --external
 
 ## NPM packages used for this app
@@ -139,5 +141,3 @@ This app is on Angular 11. Update to latest Angular 11 with:
 `ng update @angular/cli@11 @angular/core@11`
 
 Follow the instructions eventualy for fixes
-# ing-portfolio
-# ing-portfolio
