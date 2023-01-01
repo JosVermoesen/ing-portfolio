@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      QR Scanner
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <input #fileinput type="file" accept="image/*;capture=camera" hidden (change)="handleFile($event.target.files)">
+
+  <ion-button expand="full" (click)="captureImage()">
+    <ion-icon slot="start" name="camera"></ion-icon>
+    Via Bestand
+  </ion-button>
+
+  <ion-button expand="full" (click)="startScan()">
+    <ion-icon slot="start" name="scan"></ion-icon>
+    Scannen
+  </ion-button>
+
+  <ion-button expand="full" (click)="reset()" color="warning" *ngIf="scanResult">
+    <ion-icon slot="start" name="refresh"></ion-icon>
+    Reset
+  </ion-button>
+
+  <video #video [hidden]="!scanActive" width="50%"></video>
+
+  <canvas #canvas hidden></canvas>
+
+  <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Scan stoppen
+  </ion-button>
+
+  <div *ngIf="scanResult">
+    <ion-button expand="full" (click)="onClipTest(scanResult)" color="danger">
+      <ion-icon slot="start" name="close"></ion-icon>
+      Kopieer naar klembord
+    </ion-button>
+  </div>
+
+  <ion-card *ngIf="scanResult">
+    <ion-card-header>
+      <ion-card-title>QR Code</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ scanResult }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
