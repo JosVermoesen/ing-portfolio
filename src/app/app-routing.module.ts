@@ -15,6 +15,11 @@ const routes: Routes = [
       import('./pages/home/home.module').then((m) => m.HomePageModule),
   },
   {
+    path: 'intro',
+    loadChildren: () =>
+      import('./pages/intro/intro.module').then((m) => m.IntroPageModule),
+  },
+  {
     path: 'about',
     loadChildren: () =>
       import('./pages/about/about.module').then((m) => m.AboutPageModule),
@@ -60,9 +65,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./pages/users/login/login.module').then(
-        (m) => m.LoginPageModule
-      ),
+      import('./pages/users/login/login.module').then((m) => m.LoginPageModule),
   },
   {
     path: '',
@@ -72,9 +75,7 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () =>
-          import('./pages/users/user.module').then(
-            (m) => m.UserPageModule
-          ),
+          import('./pages/users/user.module').then((m) => m.UserPageModule),
       },
       {
         path: 'customers/:id',
@@ -99,9 +100,9 @@ const routes: Routes = [
   },
   {
     path: 'contact',
-    loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactPageModule)
+    loadChildren: () =>
+      import('./pages/contact/contact.module').then((m) => m.ContactPageModule),
   },
-
 ];
 
 // routes, { useHash: true }
