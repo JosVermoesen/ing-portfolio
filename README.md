@@ -2,10 +2,9 @@
 
 ## Getting started for users
 
-Android version: [demo](https://play.google.com/store/apps/details?id=be.vsoft.portfolio)
 Web version: [demo](https://mijn.rv.be)
 
-Your own added data is stored as json files inside the localStorage of the browser you are using. Profit. :tada:
+Your own added data is stored as json files inside the localStorage of the browser you are using (if you do not use (our) broker servers). Profit. :tada:
 
 ## Getting started for developers
 

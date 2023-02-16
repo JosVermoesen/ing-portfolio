@@ -50,7 +50,7 @@ export class UserPage implements OnInit {
 
   searchClient: string;
   hasClientNumber: boolean;
-  isLoading = true;
+  isLoading = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -125,6 +125,7 @@ export class UserPage implements OnInit {
   loadClientData(clientId: string) {
     this.isLoading = true;
     this.router.navigate(['/customers', clientId]);
+    this.isLoading = false;
   }
 
   fakeClientNumber(clientId: string) {
