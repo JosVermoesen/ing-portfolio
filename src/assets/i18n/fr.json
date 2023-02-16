@@ -12,6 +12,10 @@
     "ErrorMessage": "Veuillez utiliser la carte pour choisir un emplacement!",
     "ErrorOkay": "D'accord"
   },
+  "INTRO": {
+    "Title": "Introduction",
+    "Start": "Commencer à utiliser Portfolio"
+  },
   "MANUALNEWEDIT": {
     "TitleNew": "Ajouter assurance",
     "TitleEdit": "Modifier assurance",
@@ -39,8 +43,8 @@
     "LogIn": "Se connecter",
     "MyProfilePage": "Mon tableau de bord",
     "MessageWebSite": "Website",
-    "MessageInvestorProfile": "Profil d'Investisseur",    
-    "MessageAboutApp": "Consultez vos contrats & documents, envoie un message.",    
+    "MessageInvestorProfile": "Profil d'Investisseur",
+    "MessageAboutApp": "Consultez vos contrats & documents, envoie un message.",
     "WelcomeMessage": "Mon Portfolio - Bienvenue!",
     "MessageLoginServer": "Connexion au serveur",
     "MessageServerLocalCopy": "Server Datakopie",

@@ -3,7 +3,12 @@ import { SettingsPopoverPage } from './settings-popover/settings-popover.page';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { PopoverController, AlertController, Platform } from '@ionic/angular';
+import {
+  PopoverController,
+  AlertController,
+  Platform,
+  NavController,
+} from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { environment } from '../../../environments/environment';
 import { AccountService } from '../../shared/services/account.service';
@@ -33,10 +38,18 @@ export class HomePage implements OnInit {
     private ts: TranslateService,
     private mc: ManualContractService,
     private ionicStorage: Storage,
-    private platform: Platform
+    private platform: Platform,
+    private navCtrl: NavController
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    const introPreviouslyShown = await this.ionicStorage.get('introShown');
+
+    if (introPreviouslyShown === null) {
+      this.ionicStorage.set('introShown', true);
+      this.navCtrl.navigateRoot('/intro');
+    }
+
     this.ionicStorage.get('MANUALONLY').then((val) => {
       if (val === 'TRUE') {
         this.togglemanualONLY = true;
