@@ -36,7 +36,7 @@ Add your own environment for versions and api codes
 
 ```json
   production: true|false,
-  version: '4.2.0',
+  version: '4.4.0',
   googleMapsAPIKey: 'yourkey1',
 
   // should be http when SSL not enabled
