@@ -1,23 +1,24 @@
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ContractEditComponent } from './contractedit/contractedit.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { ContractdetailComponent } from './contractdetail/contractdetail.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { Routes, RouterModule } from '@angular/router';
 
 import { ContractsListPage } from './contractslist.page';
 import { ContractNewComponent } from './contractnew/contractnew.component';
-import { HttpClient } from '@angular/common/http';
+import { ContractEditComponent } from './contractedit/contractedit.component';
+import { ContractdetailComponent } from './contractdetail/contractdetail.component';
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
     path: '',
-    component: ContractsListPage
-  }
+    component: ContractsListPage,
+  },
 ];
 
 export function createTranslateLoader(http: HttpClient) {
@@ -31,23 +32,23 @@ export function createTranslateLoader(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
     ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   declarations: [
     ContractNewComponent,
     ContractEditComponent,
     ContractdetailComponent,
-    ContractsListPage
+    ContractsListPage,
   ],
   entryComponents: [
     ContractNewComponent,
     ContractEditComponent,
-    ContractdetailComponent
-  ]
+    ContractdetailComponent,
+  ],
 })
 export class ContractsListPageModule {}
