@@ -2,7 +2,7 @@ import { ManualContractService } from './../../../shared/services/manualcontract
 import { SelectOptions } from '../../../shared/models/selectOptions';
 import { VsoftContract } from '../../../shared/models/vsoftContract';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalController } from '@ionic/angular';
 
@@ -14,7 +14,7 @@ import { ModalController } from '@ionic/angular';
 export class ContractEditComponent implements OnInit {
   @Input() selectedContract: VsoftContract;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   VS97S: SelectOptions[]; // Actioncode
   A010S: SelectOptions[]; // Insurers
@@ -34,24 +34,24 @@ export class ContractEditComponent implements OnInit {
   }
 
   createContractForm() {
-    this.form = new FormGroup({
-      id: new FormControl(this.selectedContract.id, {
+    this.form = new UntypedFormGroup({
+      id: new UntypedFormControl(this.selectedContract.id, {
         validators: [Validators.required, Validators.maxLength(12)]
       }),
-      a010: new FormControl(this.selectedContract.a010, {
+      a010: new UntypedFormControl(this.selectedContract.a010, {
         validators: [Validators.required]
       }),
-      vs99: new FormControl(this.selectedContract.vs99, {
+      vs99: new UntypedFormControl(this.selectedContract.vs99, {
         validators: [Validators.required, Validators.min(1)]
       }),
-      vs98: new FormControl(this.selectedContract.vs98),
-      vs97: new FormControl(this.selectedContract.vs97, {
+      vs98: new UntypedFormControl(this.selectedContract.vs98),
+      vs97: new UntypedFormControl(this.selectedContract.vs97, {
         validators: [Validators.required]
       }),
-      aw2: new FormControl(this.selectedContract.aw2, {
+      aw2: new UntypedFormControl(this.selectedContract.aw2, {
         validators: [Validators.required]
       }),
-      a325: new FormControl(this.selectedContract.a325, {
+      a325: new UntypedFormControl(this.selectedContract.a325, {
         validators: [Validators.required]
       })
     });

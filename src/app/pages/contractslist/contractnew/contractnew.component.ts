@@ -3,7 +3,7 @@ import { ManualContractService } from './../../../shared/services/manualcontract
 import { ToastService } from './../../../shared/services/toast.service';
 import { VsoftContract } from '../../../shared/models/vsoftContract';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalController } from '@ionic/angular';
 
@@ -15,7 +15,7 @@ import { ModalController } from '@ionic/angular';
 export class ContractNewComponent implements OnInit {
   @Input() lastId: number;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   vsoftContract: VsoftContract;
 
   VS97S: SelectOptions[]; // Actioncode
@@ -42,24 +42,24 @@ export class ContractNewComponent implements OnInit {
   }
 
   createContractForm() {
-    this.form = new FormGroup({
-      id: new FormControl('', {
+    this.form = new UntypedFormGroup({
+      id: new UntypedFormControl('', {
         validators: [Validators.required, Validators.maxLength(12)]
       }),
-      a010: new FormControl('', {
+      a010: new UntypedFormControl('', {
         validators: [Validators.required]
       }),
-      vs99: new FormControl('', {
+      vs99: new UntypedFormControl('', {
         validators: [Validators.required, Validators.min(1)]
       }),
-      vs98: new FormControl(''),
-      vs97: new FormControl('1', {
+      vs98: new UntypedFormControl(''),
+      vs97: new UntypedFormControl('1', {
         validators: [Validators.required]
       }),
-      aw2: new FormControl('', {
+      aw2: new UntypedFormControl('', {
         validators: [Validators.required]
       }),
-      a325: new FormControl('1', {
+      a325: new UntypedFormControl('1', {
         validators: [Validators.required]
       })
     });

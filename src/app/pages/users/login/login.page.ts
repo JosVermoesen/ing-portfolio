@@ -1,7 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 import { ToastService } from './../../../shared/services/toast.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from '../../../shared/services/account.service';
 
@@ -11,7 +11,7 @@ import { AccountService } from '../../../shared/services/account.service';
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
-  loginForm: FormGroup;
+  loginForm: UntypedFormGroup;
   isLoading = false;
 
   userMessage: string;
@@ -30,11 +30,11 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.initTranslateMessages();
-    this.loginForm = new FormGroup({
-      username: new FormControl(null, {
+    this.loginForm = new UntypedFormGroup({
+      username: new UntypedFormControl(null, {
         validators: [Validators.required]
       }),
-      password: new FormControl(null, {
+      password: new UntypedFormControl(null, {
         validators: [
           Validators.required,
           Validators.minLength(8),

@@ -1,8 +1,8 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
-  FormBuilder,
+  UntypedFormGroup,
+  UntypedFormBuilder,
   Validators,
   ValidatorFn,
   AbstractControl
@@ -20,7 +20,7 @@ import { AccountService } from '../../../shared/services/account.service';
   styleUrls: ['./register.page.scss']
 })
 export class RegisterPage implements OnInit {
-  registerForm: FormGroup;
+  registerForm: UntypedFormGroup;
   user: User;
   maxDate: Date;
   maxAge: string;
@@ -43,7 +43,7 @@ export class RegisterPage implements OnInit {
   constructor(
     private aService: AccountService,
     private router: Router,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private ts: ToastService,
     private translate: TranslateService
   ) { }

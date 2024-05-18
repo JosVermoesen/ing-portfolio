@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { MailService } from './../../shared/services/mail.service';
 import { Contactmail } from '../../shared/models/contactmail';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, FormControl, Validators, UntypedFormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
@@ -27,7 +27,7 @@ export class ContactPage implements OnInit {
   mailSubject: string;
   templateBody: string = null;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   urlEmail: string = null;
   urlName: string = null;
   urlPhone: string = null;
@@ -37,7 +37,7 @@ export class ContactPage implements OnInit {
     private router: Router,
     private toastService: ToastService,
     private http: HttpClient,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private ms: MailService,
     private ts: TranslateService
   ) { }

@@ -1,6 +1,6 @@
 import { AlertController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 
@@ -42,7 +42,7 @@ function base64toBlob(base64Data, contentType) {
 export class UserPage implements OnInit {
   public photos: StoragePhoto[] = [];
 
-  editForm: FormGroup;
+  editForm: UntypedFormGroup;
   // @ViewChild('editForm')
   activeUser: User;
   user: User;
