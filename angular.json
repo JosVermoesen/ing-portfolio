@@ -15,7 +15,10 @@
           "options": {
             "allowedCommonJsDependencies": [
               "qrcode",
-              "url"
+              "url",
+              "localforage",
+              "localforage-cordovasqlitedriver",
+              "jsqr"
             ],
             "outputPath": "www",
             "index": "src/index.html",
