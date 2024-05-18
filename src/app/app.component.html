@@ -45,12 +45,12 @@
           </ion-item>
         </ion-menu-toggle>
 
-        <!-- <ion-menu-toggle>
+        <ion-menu-toggle>
           <ion-item lines="none" routerLink="/map">
             <ion-icon name="locate" slot="start"></ion-icon>
             <ion-label>{{ 'MAP.Title' | translate }}</ion-label>
           </ion-item>
-        </ion-menu-toggle> -->
+        </ion-menu-toggle>
 
         <ion-menu-toggle *ngIf="aService.currentUser$ | async">
           <ion-item lines="none" (click)="presentAlertConfirm()" button>
