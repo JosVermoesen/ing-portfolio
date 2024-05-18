@@ -13,17 +13,16 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    LocationPickerComponent,
-    MapModalComponent,
-    ImagePickerComponent
-  ],
-  imports: [
-    CommonModule,
-    TranslateModule,
-    IonicModule
-  ],
-  exports: [LocationPickerComponent, MapModalComponent, ImagePickerComponent],
-  entryComponents: [MapModalComponent]
+    declarations: [
+        LocationPickerComponent,
+        MapModalComponent,
+        ImagePickerComponent
+    ],
+    imports: [
+        CommonModule,
+        TranslateModule,
+        IonicModule
+    ],
+    exports: [LocationPickerComponent, MapModalComponent, ImagePickerComponent]
 })
 export class SharedModule {}

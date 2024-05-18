@@ -23,20 +23,19 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  imports: [
-    CommonModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes),
-  ],
-  declarations: [IntroPage],
-  entryComponents: [IntroPage],
+    imports: [
+        CommonModule,
+        TranslateModule.forChild({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes),
+    ],
+    declarations: [IntroPage]
 })
 export class IntroPageModule {}

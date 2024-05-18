@@ -21,30 +21,28 @@ import { SettingsPopoverPageModule } from './pages/home/settings-popover/setting
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    IonicStorageModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
-    SettingsPopoverPageModule
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        IonicModule.forRoot(),
+        IonicStorageModule.forRoot(),
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient]
+            }
+        }),
+        SettingsPopoverPageModule
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

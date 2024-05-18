@@ -26,29 +26,24 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  imports: [
-    CommonModule,
-    TranslateModule.forChild({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: createTranslateLoader,
-        deps: [HttpClient],
-      },
-    }),
-    ReactiveFormsModule,
-    IonicModule,
-    RouterModule.forChild(routes),
-  ],
-  declarations: [
-    ContractNewComponent,
-    ContractEditComponent,
-    ContractdetailComponent,
-    ContractsListPage,
-  ],
-  entryComponents: [
-    ContractNewComponent,
-    ContractEditComponent,
-    ContractdetailComponent,
-  ],
+    imports: [
+        CommonModule,
+        TranslateModule.forChild({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: createTranslateLoader,
+                deps: [HttpClient],
+            },
+        }),
+        ReactiveFormsModule,
+        IonicModule,
+        RouterModule.forChild(routes),
+    ],
+    declarations: [
+        ContractNewComponent,
+        ContractEditComponent,
+        ContractdetailComponent,
+        ContractsListPage,
+    ]
 })
 export class ContractsListPageModule {}
