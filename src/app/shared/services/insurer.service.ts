@@ -17,7 +17,7 @@ export class InsurerService {
       imageUrl: 'be_0096.png'
     },
     {
-      id: 'be_1401',
+      id: 'be_0888',
       name: 'Europ Assistance',
       serviceAbout: '',
       phone: '+32 2 533 75 75',

@@ -29,7 +29,7 @@
 
   <video #video [hidden]="!scanActive" width="50%"></video>
 
-  <canvas #canvas hidden></canvas>
+  <canvas width=200 height=200 style=width:100px;height:100px #canvas hidden></canvas>
 
   <ion-button expand="full" (click)="stopScan()" color="danger" *ngIf="scanActive">
     <ion-icon slot="start" name="close"></ion-icon>
